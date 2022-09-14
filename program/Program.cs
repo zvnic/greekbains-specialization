@@ -40,10 +40,11 @@ string[] ConvertArray(int sizeLengthString, string[] str) {
 }
 
 void PrintResult(string[] str, int max) {
-    if(str.Length == 0) {
-        Console.WriteLine($"Результат: в массиве нет слов длинной меньше {max}");
+    string[] res = ConvertArray(max, str);
+    if(res.Length == 0) {
+        Console.WriteLine($"Результат: в массиве нет слов длинной меньше {max} символов.");
     } else {
-        Console.WriteLine($"Результат: {string.Join(", ", ConvertArray(max, str))}");
+        Console.WriteLine($"Результат: {string.Join(", ", res)}");
     }
 }
 

@@ -2,7 +2,7 @@
 Console.WriteLine("#Task");
 
 string[] GetNewArray() {
-    int randomArraySize = new Random().Next(1,10);
+    int randomArraySize = new Random().Next(1,6);
     string[] str = new string[randomArraySize];
     return str;
 }
@@ -21,16 +21,33 @@ string[] EnterWordToArray(string[] str) {
 
 string[] ConvertArray(int sizeLengthString, string[] str) {
     string[] newArray = new string[str.Length];
+    int count = 0;
+    // ищем элементы указанной длинны
     for(int i = 0; i < str.Length; i++) {
-        if(str[i].Length <= 3) newArray[i] = str[i];
+        if(str[i].Length <= sizeLengthString) {
+            newArray[count] = (str[i]);
+            count++;
+        }
     }
-    return newArray;
+    string[] resultArray = new string[count];
+    // удаляем пустые элементы массива копируя в новый массив
+    for(int i = 0; i < resultArray.Length; i++) {
+        if(newArray[i] != "") {
+            resultArray[i] = newArray[i];
+        }
+    }
+    return resultArray;
 }
 
-void PrintArray(string[] str) {
-    Console.WriteLine($"Результат: {string.Join(", ", ConvertArray(3, str))}");
+void PrintResult(string[] str, int max) {
+    if(str.Length == 0) {
+        Console.WriteLine($"Результат: в массиве нет слов длинной меньше {max}");
+    } else {
+        Console.WriteLine($"Результат: {string.Join(", ", ConvertArray(max, str))}");
+    }
 }
 
 string[] str = EnterWordToArray(GetNewArray());
-PrintArray(str);
+int maxLengthWord = 3;
 
+PrintResult(str, maxLengthWord);

@@ -19,4 +19,18 @@ string[] EnterWordToArray(string[] str) {
     return str;
 }
 
+string[] ConvertArray(int sizeLengthString, string[] str) {
+    string[] newArray = new string[str.Length];
+    for(int i = 0; i < str.Length; i++) {
+        if(str[i].Length <= 3) newArray[i] = str[i];
+    }
+    return newArray;
+}
+
+void PrintArray(string[] str) {
+    Console.WriteLine($"Результат: {string.Join(", ", ConvertArray(3, str))}");
+}
+
+string[] str = EnterWordToArray(GetNewArray());
+PrintArray(str);
 
